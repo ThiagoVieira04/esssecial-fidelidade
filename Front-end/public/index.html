@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Essencial Fidelidade</title>
+
+  <!-- Manifest PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#006400" />
+
+  <!-- Firebase SDK -->
+  <script defer src="/__/firebase/12.1.0/firebase-app-compat.js"></script>
+  <script defer src="/__/firebase/12.1.0/firebase-database-compat.js"></script>
+  <script defer src="/__/firebase/12.1.0/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/init.js"></script>
+
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('Service Worker registrado com sucesso'))
+        .catch(err => console.error('Erro ao registrar Service Worker:', err));
+    }
+  </script>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <img src="assets/logo.png" alt="Logo Essencial" class="logo" />
+      <h1>Cartão Fidelidade</h1>
+    </header>
+
+    <div class="view" id="login-view">
+      <h2>Login</h2>
+      <form id="login-form">
+        <input type="text" placeholder="Nome" required />
+        <input type="password" placeholder="Senha" required />
+        <button type="submit">Entrar</button>
+      </form>
+      <p>Não tem conta? <a href="#" id="go-to-register">Cadastre-se</a></p>
+    </div>
+
+    <div class="view" id="register-view" style="display: none;">
+      <h2>Cadastro</h2>
+      <form id="register-form">
+        <input type="text" placeholder="Nome" required />
+        <input type="tel" placeholder="Celular" required />
+        <input type="password" placeholder="Senha" required />
+        <button type="submit">Cadastrar</button>
+      </form>
+      <p>Já tem conta? <a href="#" id="go-to-login">Entrar</a></p>
+    </div>
+
+    <div class="view" id="card-view" style="display: none;">
+      <div class="card-header">
+        <h2>Olá, <span id="user-name"></span></h2>
+        <button id="logout-button">Sair</button>
+      </div>
+      <div class="stamp-grid" id="stamp-grid"></div>
+      <button id="add-stamp-button">Adicionar Carimbo</button>
+      <p id="reward-message"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

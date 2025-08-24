@@ -1,0 +1,23 @@
+# .gitignore
+
+# Firebase e variáveis de ambiente
+.env
+firebase-adminsdk.json
+serviceAccountKey.json
+
+# Node.js
+node_modules/
+
+# IDEs e sistema
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build e cache
+dist/
+build/
+.cache/
